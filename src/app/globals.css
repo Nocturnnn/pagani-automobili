@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05060a;
+  --panel: rgba(255, 255, 255, 0.05);
+  --text: #f3f5f8;
+  --muted: rgba(243, 245, 248, 0.65);
+  --line: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  background:
+    radial-gradient(
+      circle at 58% 42%,
+      rgba(255, 158, 64, 0.12),
+      transparent 16%
+    ),
+    radial-gradient(
+      circle at 30% 26%,
+      rgba(68, 112, 255, 0.12),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 72% 20%,
+      rgba(255, 190, 120, 0.08),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 50% 60%,
+      rgba(255, 255, 255, 0.03),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #05070c 0%, #04060a 100%);
+
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* =========================
+   CANVAS 3D
+========================= */
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.canvas-wrap canvas {
+  background: transparent;
+}
+
+/* =========================
+   HERO OVERLAY
+========================= */
+
+/* =========================
+   INTRO OVERLAY
+========================= */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+  pointer-events: none;
+}
+
+.intro-logo {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #f5f5f5;
+
+  will-change: transform, opacity, filter;
+}
+
+.hero-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 26px;
+}
+
+/* =========================
+   TEXTO GIGANTE DE FUNDO
+========================= */
+
+.bg-word {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: clamp(4rem, 16vw, 12rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  line-height: 0.9;
+
+  color: rgba(255, 255, 255, 0.035);
+
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+
+  z-index: 0;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-small {
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+
+  font-size: 0.82rem;
+
+  color: var(--muted);
+}
+
+/* =========================
+   HERO COPY
+========================= */
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+
+  max-width: 420px;
+
+  padding-left: 10px;
+  margin-top: 40px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+
+  font-size: 0.68rem;
+  text-transform: uppercase;
+
+  letter-spacing: 0.26em;
+
+  color: rgba(243, 245, 248, 0.55);
+}
+
+.hero-copy h1 {
+  margin: 0;
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: clamp(2.8rem, 6vw, 5.4rem);
+
+  line-height: 0.92;
+
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 320px;
+
+  margin-top: 14px;
+
+  font-size: 0.92rem;
+  line-height: 1.7;
+
+  color: rgba(243, 245, 248, 0.58);
+}
+
+/* =========================
+   SCROLL INDICATOR
+========================= */
+
+.scroll-indicator {
+  position: relative;
+  z-index: 2;
+
+  align-self: flex-start;
+
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(243, 245, 248, 0.48);
+}
+
+/* =========================
+   SCROLL SPACE
+========================= */
+
+.scroll-space {
+  position: relative;
+  z-index: 2;
+  height: 370vh;
+}
+
+.brand-small--delayed {
+  opacity: 0;
+  animation: revealBrand 0.4s ease forwards;
+  animation-delay: 2.45s;
+}
+
+@keyframes revealBrand {
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .hero-overlay {
+    padding: 18px;
+  }
+
+  .bg-word {
+    font-size: clamp(4rem, 24vw, 10rem);
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    padding-left: 0;
+  }
+}
